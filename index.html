@@ -4,14 +4,28 @@
     <title>OAuth Callback</title>
     <meta charset="UTF-8">
 </head>
-<body>
+<body style="font-family: system-ui; padding: 20px; text-align: center;">
+    <h2>Authorization Successful!</h2>
+    <p>Tap the button below to return to CashAndFly</p>
+    <button id="redirectBtn" style="padding: 15px 30px; font-size: 18px; background: #007AFF; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        Open CashAndFly
+    </button>
     <script>
-        // Convert HTTPS URL to custom scheme URL (keep the host!)
-        // https://queri-co-jp.github.io/cashandfly/?code=xyz
-        // becomes: com.cashandfly.app://queri-co-jp.github.io/cashandfly/?code=xyz
+        // Convert HTTPS URL to custom scheme URL
         let result = window.location.href.replace("https", "com.cashandfly.app");
+
+        // Try automatic redirect first
         window.location.href = result;
+
+        // Also add button handler as fallback
+        document.getElementById('redirectBtn').onclick = function() {
+            window.location.href = result;
+        };
+
+        // Auto-click the button after a delay (workaround for ASWebAuthenticationSession)
+        setTimeout(function() {
+            document.getElementById('redirectBtn').click();
+        }, 500);
     </script>
-    <p>Redirecting to app...</p>
 </body>
 </html>
