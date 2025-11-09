@@ -16,8 +16,8 @@
         // Extract just the query parameters (everything after ?)
         const urlParams = window.location.search;
 
-        // Build proper app URL with custom scheme
-        const appUrl = "com.cashandfly.app:/oauth/callback" + urlParams;
+        // Build proper app URL with custom scheme (MUST have :// not just :)
+        const appUrl = "com.cashandfly.app://oauth/callback" + urlParams;
 
         console.log("Current URL:", currentUrl);
         console.log("App URL:", appUrl);
