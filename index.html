@@ -7,25 +7,21 @@
 <body style="font-family: system-ui; padding: 20px; text-align: center;">
     <h2>Authorization Successful!</h2>
     <p>Tap the button below to return to CashAndFly</p>
-    <button id="redirectBtn" style="padding: 15px 30px; font-size: 18px; background: #007AFF; color: white; border: none; border-radius: 8px; cursor: pointer;">
+    <p id="url" style="font-size: 12px; word-break: break-all; color: #666;"></p>
+    <button id="redirectBtn" style="padding: 20px 40px; font-size: 20px; background: #007AFF; color: white; border: none; border-radius: 10px; cursor: pointer; margin-top: 20px;">
         Open CashAndFly
     </button>
     <script>
         // Convert HTTPS URL to custom scheme URL
         let result = window.location.href.replace("https", "com.cashandfly.app");
 
-        // Try automatic redirect first
-        window.location.href = result;
+        // Show the URL we're going to use
+        document.getElementById('url').textContent = result;
 
-        // Also add button handler as fallback
+        // ONLY manual button - no auto redirect
         document.getElementById('redirectBtn').onclick = function() {
             window.location.href = result;
         };
-
-        // Auto-click the button after a delay (workaround for ASWebAuthenticationSession)
-        setTimeout(function() {
-            document.getElementById('redirectBtn').click();
-        }, 500);
     </script>
 </body>
 </html>
