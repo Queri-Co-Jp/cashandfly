@@ -1,0 +1,29 @@
+ <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Redirecting to CashAndFly...</title>
+      <meta charset="UTF-8">
+  </head>
+  <body>
+      <h1>Redirecting to CashAndFly...</h1>
+      <p>Please wait while we redirect you back to the app.</p>
+
+      <script>
+          // Get the current URL with all parameters
+          const currentUrl = window.location.href;
+
+          // Replace https:// with com.cashandfly.app:
+          const appUrl = currentUrl.replace("https://", "com.cashandfly.app:");
+
+          console.log("Redirecting to:", appUrl);
+
+          // Redirect to app
+          window.location.href = appUrl;
+
+          // Fallback message after 3 seconds
+          setTimeout(function() {
+              document.body.innerHTML = '<h1>Unable to open app automatically</h1><p>Please make sure CashAndFly is installed.</p><p>Redirect URL: <code>' + appUrl + '</code></p>';
+          }, 3000);
+      </script>
+  </body>
+  </html>
