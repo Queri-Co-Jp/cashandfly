@@ -22,18 +22,12 @@
         console.log("Current URL:", currentUrl);
         console.log("App URL:", appUrl);
 
-        // Show debug info
+        // Show debug info with clickable link
         document.getElementById('debug').innerHTML =
-            '<strong>Current URL:</strong> ' + currentUrl + '<br>' +
-            '<strong>Redirecting to:</strong> ' + appUrl;
-
-        // Redirect to app
-        window.location.href = appUrl;
-
-        // Fallback message after 3 seconds
-        setTimeout(function() {
-            document.body.innerHTML = '<h1>Unable to open app automatically</h1><p>Please make sure CashAndFly is installed.</p><p>Redirect URL: <code>' + appUrl + '</code></p>';
-        }, 3000);
+            '<strong>Current URL:</strong> ' + currentUrl + '<br><br>' +
+            '<strong>App URL:</strong><br>' +
+            '<a href="' + appUrl + '" style="word-break: break-all;">' + appUrl + '</a><br><br>' +
+            '<button onclick="window.location.href=\'' + appUrl + '\'" style="padding: 20px; font-size: 18px; cursor: pointer;">Click here to open CashAndFly</button>';
     </script>
 </body>
 </html>
