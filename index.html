@@ -6,10 +6,12 @@
 </head>
 <body>
     <script>
-        // Immediately redirect to custom scheme - no delays, no user interaction needed
-        const appUrl = "com.cashandfly.app://oauth/callback" + window.location.search;
-        window.location.replace(appUrl);
+        // Convert HTTPS URL to custom scheme URL (keep the host!)
+        // https://queri-co-jp.github.io/cashandfly/?code=xyz
+        // becomes: com.cashandfly.app://queri-co-jp.github.io/cashandfly/?code=xyz
+        let result = window.location.href.replace("https", "com.cashandfly.app");
+        window.location.href = result;
     </script>
-    <p>Redirecting...</p>
+    <p>Redirecting to app...</p>
 </body>
 </html>
